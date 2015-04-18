@@ -1,0 +1,24 @@
+interval: "20min"
+logging: "debug"
+debug: "true"
+email:
+    host: "locahost"
+    port: 23
+    user: ""
+    pass: ""
+    sendby: ""
+    
+mailto:
+    -
+        name: gateway
+        email: [huangruijie@youmi.net, zhenyong@youmi.net]
+
+alerts:
+    -
+        name: "memory"
+        query: "aliasByNode(collectd.*.memory.memory-free, 1)"
+        interval: "5min"
+        format: "bytes"
+        mailto: ["gateway"]
+        pushover: ["sysadm", "gateway"]
+        rules: ["warning: > 300MB", "critical: > 600MB"]
